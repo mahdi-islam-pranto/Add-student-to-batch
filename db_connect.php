@@ -13,6 +13,7 @@ if (!$db_connection) {
 }
 
 else{
-    echo "DB connected successfully";
+    echo "DB connected successfully ";
 }
 
+?>
