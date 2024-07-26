@@ -1,0 +1,9 @@
+#heading{
+    align-items: center;
+    text-align: center;
+    background-color: silver;
+    color: black;
+    padding: 10px;
+    letter-spacing: 5px;
+    font-weight: 500;
+}
