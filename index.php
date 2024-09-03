@@ -1,28 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>batch</title>
+<?php include 'header.php'; ?>
+<?php include 'db_connect.php'; ?>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-    
-    <div id="heading">
-    <h1 >STUDY-HUB Coaching Center</h1>
+    <div class="container" style="margin-bottom: 20px; margin-top: 20px; background-color: silver;">
+      <h3 style="float: left;">LIST OF STUDENTS:</h3>
+      <button class="btn btn-primary" style="float: right;" data-bs-toggle="modal" data-bs-target="#addStudent">ADD STUDENT</button>
     </div>
 
-
+    
     
 
-    <!-- student table -->
-
-    <div class="container mt-5">
-
-    <h3>LIST OF STUDENTS:</h3>
     <table class="table table-bordered table-hover table-striped">
   <thead>
     <tr>
@@ -35,42 +22,38 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-    <td>1</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-    </tr>
+    <?php 
+         $query = "SELECT * FROM `students`";                   // select query
+         $result = mysqli_query($db_connection, $query);        // execute query
+         if(!$result){
+          die("query failed".mysqli_error($db_connection));
+         }
+         else{
+          while($row = mysqli_fetch_assoc($result)){            // fetch data as each row in db 
+            ?>
+
+              <tr>
+                  <td><?php echo $row['id']; ?></td>           <!-- fetch db table row data -->
+                  <td><?php echo $row['first_name']; ?></td>
+                  <td><?php echo $row['last_name']; ?></td>
+                  <td><?php echo $row['class']; ?></td>
+                  <td><?php echo $row['batch']; ?></td>
+                  <td><?php echo $row['phone']; ?></td>
+              </tr>
+
+    <?php
+            
+          }
+         }
+    
+    ?>
+    
 
 
-    <tr>
-
-        <td>2</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-    </tr>
-
-
-    <tr>
-
-        <td>3</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-    </tr>
+  
   </tbody>
 </table>
-</div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
    
-</body>
-</html>
+
+<?php include 'footer.php'; ?>
