@@ -8,7 +8,14 @@
     font-weight: 500;
 }
 
+.container{
+    margin-top: 20px;
+}
+
 .top-container{
     background-color: rgb(28, 195, 36);
 }
 
+.form-group{
+    padding: 10px;
+}
